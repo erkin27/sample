@@ -40,4 +40,9 @@ class Category extends \yii\db\ActiveRecord
             'title' => 'Title',
         ];
     }
+
+    public function getOr()
+    {
+        return $this->hasMany(Order::className(), ['customer_id' => 'id']);
+    }
 }
