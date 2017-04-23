@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 
 /**
  * This is the model class for table "category".
@@ -41,8 +40,8 @@ class Category extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getOr()
+    public function getArticles()
     {
-        return $this->hasMany(Order::className(), ['customer_id' => 'id']);
+        return $this->hasMany(Article::className(), ['category_id' => 'id']);
     }
 }

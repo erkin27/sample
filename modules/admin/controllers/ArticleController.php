@@ -154,7 +154,7 @@ class ArticleController extends Controller
 
         $article = $this->findModel($id);
 
-        $selectedCategory = $article->category->id;
+        $selectedCategory = (!empty($article->category)) ? $article->category->id : 0;
 
         $categories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
 
