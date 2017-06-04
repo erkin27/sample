@@ -8,7 +8,7 @@ use yii\helpers\Url;
             <div class="col-md-8">
                 <article class="post">
                     <div class="post-thumb">
-                        <a href="blog.html"><img src="<?=$article->getImage();?>" alt=""></a>
+                        <a href="<?=Url::toRoute(['/site/view', 'id' => $article->id])?>"><img src="<?=$article->getImage();?>" alt=""></a>
                     </div>
                     <div class="post-content">
                         <header class="entry-header text-center text-uppercase">
