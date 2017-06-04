@@ -16,7 +16,7 @@ use yii\helpers\ArrayHelper;
  * @property string $date
  * @property string $image
  * @property integer $viewed
- * @property integer $vuser_id
+ * @property integer $user_id
  * @property integer $status
  * @property integer $category_id
  *
@@ -61,7 +61,7 @@ class Article extends \yii\db\ActiveRecord
             'date' => 'Date',
             'image' => 'Image',
             'viewed' => 'Viewed',
-            'vuser_id' => 'Vuser ID',
+            'user_id' => 'User ID',
             'status' => 'Status',
             'category_id' => 'Category ID',
         ];
@@ -172,4 +172,8 @@ class Article extends \yii\db\ActiveRecord
         return Article::find()->orderBy('date asc')->limit(4)->all();
     }
 
+    public function saveArticle() {
+        $this->user_id = Yii::$app->user->id;
+        return $this->save();
+    }
 }
