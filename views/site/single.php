@@ -41,6 +41,7 @@ use yii\helpers\Url;
                                 <li><a class="s-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
                                 <li><a class="s-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a class="s-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li><?= (int)$article->viewed?>
                             </ul>
                         </div>
                     </div>
