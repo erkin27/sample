@@ -41,7 +41,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['isAdmin'], 'integer'],
-            [['name', 'username', 'email', 'password', 'photo'], 'string', 'max' => 255],
+            [['name', 'email', 'password', 'photo'], 'string', 'max' => 255],
         ];
     }
 
