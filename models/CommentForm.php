@@ -28,7 +28,7 @@ class CommentForm extends Model
         $comment = new Comment();
         $comment->text = $this->comment;
         $comment->user_id = \Yii::$app->user->id;
-        if (\Yii::$app->user->identity) {
+        if (!empty(\Yii::$app->user->identity->profile)) {
             $userId = User::findOne(['name' => \Yii::$app->user->identity->profile['name']])->id;
             $comment->user_id = $userId;
         }
