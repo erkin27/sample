@@ -28,6 +28,10 @@ class CommentForm extends Model
         $comment = new Comment();
         $comment->text = $this->comment;
         $comment->user_id = \Yii::$app->user->id;
+        if (\Yii::$app->user->identity) {
+            $userId = User::findOne(['name' => \Yii::$app->user->identity->profile['name']])->id;
+            $comment->user_id = $userId;
+        }
         $comment->article_id = $article_id;
         $comment->status = 0; //dont submit by admin
         $comment->date = date('Y-m-d');

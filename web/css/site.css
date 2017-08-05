@@ -96,6 +96,15 @@ a.desc:after {
     border: none;
 }
 
+div .eauth {
+    overflow: unset;
+}
+
+div .eauth-service {
+    margin-top: -35px;
+    padding-left: 55px;
+}
+
 @media(max-width:767px) {
     .nav li > form > button.logout {
         display:block;

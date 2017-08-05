@@ -44,6 +44,17 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'login/<service:google|facebook|etc>' => 'auth/login',
+            ],
+        ],
+
+        'eauth' => require(__DIR__.'/eauth.php'),
+        'i18n' => [
+            'translations' => [
+                'eauth' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@eauth/messages',
+                ],
             ],
         ],
 

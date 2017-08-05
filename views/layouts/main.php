@@ -38,15 +38,12 @@ PublicAsset::register($this);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img src="/public/images/logo.jpg" alt=""></a>
+                <a class="navbar-brand" href="/"><img src="/public/images/logo-blog-4.png" alt=""></a>
             </div>
 
-
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
                 <ul class="nav navbar-nav text-uppercase">
                     <li><a data-toggle="dropdown" class="dropdown-toggle" href="/">Home</a>
-
                     </li>
                 </ul>
                 <div class="i_con">
@@ -81,28 +78,18 @@ PublicAsset::register($this);
 
 <footer class="footer-widget-section">
     <div class="container">
-        <div class="row">
-            <div class="about-img"><img src="/public/images/logo2.png" alt=""></div>
-            <div class="about-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed voluptua. At vero eos et
-                accusam et justo duo dlores et ea rebum magna text ar koto din.
-            </div>
             <div class="address">
                 <h4 class="text-uppercase">contact Info</h4>
-
-                <p> 14529/12 NK Streets, DC, KZ</p>
-
-                <p> Phone: +123 456 78900</p>
-
-                <p>mytreasure.com</p>
+                <p> Kiev, UA</p>
+                <p> Phone: +38096-096-50-56</p>
+                <p>facebook.com/erkin.bokushev</p>
             </div>
-        </div>
     </div>
     <div class="footer-copy">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="text-center">&copy; <?= (new \DateTime())->format('Y');?> <a href="#">Treasure PRO, </a> Built with <i
+                    <div class="text-center">&copy; <?= (new \DateTime())->format('Y');?> <a href="#">Blog, </a> Built with <i
                                 class="fa fa-heart"></i> by <a href="#">Erkin</a>
                     </div>
                 </div>

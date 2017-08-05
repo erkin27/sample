@@ -4,11 +4,13 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\LoginForm */
 
+use nodge\eauth\Widget;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
+\app\assets\AppAsset::register($this);
 ?>
 <div class="leave-comment mr0">
     <div class="row">
@@ -40,12 +42,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
             </div>
+            <div class="col-lg-offset-2 col-lg-11">
+                <?php
+                if (Yii::$app->getSession()->hasFlash('error')) {
+                    echo '<div class="alert alert-danger">'.Yii::$app->getSession()->getFlash('error').'</div>';
+                }
+                ?>
+                <?php echo Widget::widget(['action' => 'auth/login']); ?>
 
-            <?php ActiveForm::end(); ?>
-
-            <div class="col-lg-offset-1" style="color:#999;">
-                You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-                To modify the username/password, please check out the code <code>app\models\User::$users</code>.
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>

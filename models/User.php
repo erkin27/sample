@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use nodge\eauth\ErrorException;
 use Yii;
 use yii\web\IdentityInterface;
 
@@ -20,6 +21,12 @@ use yii\web\IdentityInterface;
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
     /**
+     * @var array EAuth attributes
+     */
+    public $profile;
+    public $authKey;
+
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -34,7 +41,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['isAdmin'], 'integer'],
-            [['name', 'email', 'password', 'photo'], 'string', 'max' => 255],
+            [['name', 'username', 'email', 'password', 'photo'], 'string', 'max' => 255],
         ];
     }
 
@@ -70,7 +77,12 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return User::findOne($id);
+        if (Yii::$app->getSession()->has('user-'.$id)) {
+            return new self(Yii::$app->getSession()->get('user-'.$id));
+        }
+        else {
+            return self::findOne($id);
+        }
     }
 
     /**
@@ -143,5 +155,27 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function getImage() {
 
         return $this->photo;
+    }
+
+    /**
+     * @param \nodge\eauth\ServiceBase $service
+     * @return User
+     * @throws ErrorException
+     */
+    public static function findByEAuth($service) {
+        if (!$service->getIsAuthenticated()) {
+            throw new ErrorException('EAuth user should be authenticated before creating identity.');
+        }
+
+        $id = $service->getServiceName().'-'.$service->getId();
+        $attributes = array(
+            'id' => $id,
+            'name' => $service->getAttribute('name'),
+            'authKey' => md5($id),
+            'profile' => $service->getAttributes(),
+        );
+        $attributes['profile']['service'] = $service->getServiceName();
+        Yii::$app->getSession()->set('user-'.$id, $attributes);
+        return new self($attributes);
     }
 }
