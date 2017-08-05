@@ -96,13 +96,12 @@ a.desc:after {
     border: none;
 }
 
-div a .eauth {
-    overflow: unset;
+div .eauth {
+    overflow: visible;
 }
 
 div .eauth-service {
-    margin-top: -35px;
-    padding-left: 55px;
+    margin-top: -34px;
 }
 
 div .address {
