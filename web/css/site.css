@@ -112,12 +112,26 @@ div .navbar-brand {
     padding: 5px 15px; !important;
 }
 
+.btn-success {
+    margin-left: 15px;
+}
+
 @media(max-width:767px) {
     .nav li > form > button.logout {
         display:block;
         text-align: left;
         width: 100%;
         padding: 10px 15px;
+    }
+
+    .btn-success {
+        margin-left: 140px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .btn-success {
+        margin-left: 80px;
     }
 }
 
